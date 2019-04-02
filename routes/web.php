@@ -257,7 +257,7 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
 
 
 
-      //小说评论列表页面
+     //小说评论列表页面
      Route::get('novel/comment/list','Admin\CommentController@list')->name('admin.novel.comment.list');
      //小说数据
      Route::get('novel/comment/data','Admin\CommentController@getComment')->name('admin.novel.comment.data');
@@ -270,5 +270,108 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
      
 
 	/*--------------------------------------[小说相关]-------------------------------------*/
+
+	/*--------------------------------------[商品品牌相关]-------------------------------------*/
+
+	//商品品牌列表
+	Route::any('brand/list','Admin\BrandController@list')->name('admin.brand.list');
+
+	//商品品牌列表
+	Route::any('brand/doList','Admin\BrandController@doList')->name('admin.brand.doList');
+
+	//商品品牌添加页面
+	Route::any('brand/add','Admin\BrandController@add')->name('admin.brand.add');
+	//商品品牌执行添加
+	Route::any('brand/doAdd','Admin\BrandController@doAdd')->name('admin.brand.doAdd');
+
+	//商品品牌删除
+	Route::any('brand/del/{id}','Admin\BrandController@del')->name('admin.brand.del');
+
+	//商品品牌修改页面
+	Route::any('brand/edit/{id}','Admin\BrandController@edit')->name('admin.brand.edit');
+	//商品品牌执行修改
+	Route::any('brand/doEdit','Admin\BrandController@doEdit')->name('admin.brand.doEdit');
+	//修改品牌的属性值
+	Route::post('brand/change/attr','Admin\BrandController@changeAttr')->name('admin.brand.change.attr');
+
+    /*--------------------------------------[商品品牌相关]-------------------------------------*/
+    
+
+    /*--------------------------------------[商品品牌相关]-------------------------------------*/
+
+    //商品分类列表页面
+    Route::get('category2/list', 'Admin\Category2Controller@list')->name('admin.category2.list');
+
+    //获取商品接口分类的数据
+    Route::get('category2/get/data/{fid?}','Admin\Category2Controller@getListDate')->name('admin.category2.get.data');
+
+    //商品添加页面
+    Route::get('category2/add','Admin\Category2Controller@add')->name('admin.category2.add');
+
+    //商品执行添加操作
+    Route::post('category2/doAdd','Admin\Category2Controller@doAdd')->name('admin.category2.doAdd');
+
+    //商品编辑页面
+    Route::get('category2/edit/{id}','Admin\Category2Controller@edit')->name('admin.category2.edit');
+
+    //商品执行编辑操作
+    Route::post('category2/doEdit','Admin\Category2Controller@doEdit')->name('admin.category2.doEdit');
+    
+    //商品执行删除操作
+    Route::get('category2/del/{id}','Admin\Category2Controller@del')->name('admin.category2.del');
+
+    /*--------------------------------------[商品品牌相关]-------------------------------------*/
+
+
+
+    /*--------------------------------------[商品文章分类相关]-------------------------------------*/
+
+    //商品文章列表页面
+    Route::get('article/category/list', 'Admin\ArticleCategoryController@list')->name('admin.article.category.list');
+
+    //商品文章添加页面
+    Route::get('article/category/add', 'Admin\ArticleCategoryController@add')->name('admin.article.category.add');
+
+    //商品文章执行添加
+    Route::post('article/category/doAdd', 'Admin\ArticleCategoryController@doAdd')->name('admin.article.category.doAdd');
+
+    //商品文章修改页面
+    Route::get('article/category/edit/{id}', 'Admin\ArticleCategoryController@edit')->name('admin.article.category.edit');
+
+    //商品文章执行修改
+    Route::post('article/category/doEdit', 'Admin\ArticleCategoryController@doEdit')->name('admin.article.category.doEdit');
+
+    //商品文章删除
+    Route::get('article/category/del/{id}', 'Admin\ArticleCategoryController@del')->name('admin.article.category.del');
+
+
+    /*--------------------------------------[商品文章分类相关]-------------------------------------*/
+
+
+
+
+    /*--------------------------------------[商品文章相关]-------------------------------------*/
+
+    //商品文章列表页面
+    Route::get('article/list', 'Admin\ArticleController@list')->name('admin.article.list');
+
+    //商品文章添加页面
+    Route::get('article/add', 'Admin\ArticleController@add')->name('admin.article.add');
+
+    //商品文章执行添加
+    Route::post('article/doAdd', 'Admin\ArticleController@doAdd')->name('admin.article.doAdd');
+
+    //商品文章修改页面
+    Route::get('article/edit/{id}', 'Admin\ArticleController@edit')->name('admin.article.edit');
+
+    //商品文章执行修改
+    Route::post('article/doEdit', 'Admin\ArticleController@doEdit')->name('admin.article.doEdit');
+
+    //商品文章删除
+    Route::get('article/del/{id}', 'Admin\ArticleController@del')->name('admin.article.del');
+
+
+
+    /*--------------------------------------[商品文章相关]-------------------------------------*/
 
 });
