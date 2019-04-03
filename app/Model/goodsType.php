@@ -4,9 +4,11 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ad extends Model
+class goodsType extends Model
 {
-    protected $table = "jy_ad";
+    //指定表
+    protected $table = "jy_goods_type";
 
     public $timestamps= false;
+
 }

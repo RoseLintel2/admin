@@ -11,6 +11,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+
+    //获取列表
+    public function getList($object ,$where= [])
+    {
+    	$list = $object->get()->toArray();
+
+    	return $list;
+    }
     
     //删除_token下划线token值
 	public function delToken(array $params)

@@ -374,4 +374,76 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
 
     /*--------------------------------------[商品文章相关]-------------------------------------*/
 
+    /*--------------------------------------[广告位相关]-------------------------------------*/
+
+
+    //广告位列表页面
+    Route::get('position/list', 'Admin\AdPositionController@list')->name('admin.position.list');
+
+    //广告位添加页面
+    Route::get('position/add', 'Admin\AdPositionController@add')->name('admin.position.add');
+
+    //广告位执行添加
+    Route::post('position/doAdd', 'Admin\AdPositionController@doAdd')->name('admin.position.doAdd');
+
+    //广告位修改页面
+    Route::get('position/edit/{id}', 'Admin\AdPositionController@edit')->name('admin.position.edit');
+
+    //广告位执行修改
+    Route::post('position/doEdit', 'Admin\AdPositionController@doEdit')->name('admin.position.doEdit');
+
+    //广告位删除
+    Route::get('position/del/{id}', 'Admin\AdPositionController@del')->name('admin.position.del');
+    
+
+    /*--------------------------------------[广告位相关]-------------------------------------*/
+
+
+    /*--------------------------------------[广告相关]---------------------------------------*/
+
+    //广告列表页面
+    Route::get('ad/list', 'Admin\AdController@list')->name('admin.ad.list');
+
+    //广告添加页面
+    Route::get('ad/add', 'Admin\AdController@add')->name('admin.ad.add');
+
+    //广告执行添加
+    Route::post('ad/doAdd', 'Admin\AdController@doAdd')->name('admin.ad.doAdd');
+
+    //广告修改页面
+    Route::get('ad/edit/{id}', 'Admin\AdController@edit')->name('admin.ad.edit');
+
+    //广告执行修改
+    Route::post('ad/doEdit', 'Admin\AdController@doEdit')->name('admin.ad.doEdit');
+
+    //广告删除
+    Route::get('ad/del/{id}', 'Admin\AdController@del')->name('admin.ad.del');
+
+
+
+    /*--------------------------------------[广告相关]--------------------------------------*/
+
+    /*--------------------------------------[商品属性列表]--------------------------------------*/
+
+    //商品属性列表页面
+    Route::get('goods/type/list', 'Admin\goodsTypeController@list')->name('admin.goods.type.list');
+
+    //商品属性添加页面
+    Route::get('goods/type/add', 'Admin\goodsTypeController@add')->name('admin.goods.type.add');
+
+    //商品属性执行添加
+    Route::post('goods/type/doAdd', 'Admin\goodsTypeController@doAdd')->name('admin.goods.type.doAdd');
+
+    //商品属性修改页面
+    Route::get('goods/type/edit/{id}', 'Admin\goodsTypeController@edit')->name('admin.goods.type.edit');
+
+    //商品属性执行修改
+    Route::post('goods/type/doEdit', 'Admin\goodsTypeController@doEdit')->name('admin.goods.type.doEdit');
+
+    //商品属性删除
+    Route::get('goods/type/del/{id}', 'Admin\goodsTypeController@del')->name('admin.goods.type.del');
+
+
+    /*--------------------------------------[商品属性列表]--------------------------------------*/
+
 });
