@@ -11,6 +11,8 @@ class goodsTypeController extends Controller
     //商品属性
     
 
+    
+
 	public function list()
 	{
 		$goodsType = new goodsType();

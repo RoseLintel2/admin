@@ -9,6 +9,11 @@ class Brand extends Model
     //品牌商品
     
 
+    const 
+        USE_ABLE = 1,//可用
+        USE_DISABLE = 2,//禁用
+        END = TRUE;
+    
     protected $table = "jy_brand";
 
     public $timestamps = false;

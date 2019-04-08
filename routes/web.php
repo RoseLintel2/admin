@@ -446,4 +446,67 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
 
     /*--------------------------------------[商品属性列表]--------------------------------------*/
 
+
+    /*--------------------------------------[商品类型属性列表]--------------------------------------*/
+
+     //商品类型属性列表页面
+    Route::get('goods/attr/list/{id}', 'Admin\goodsAttrController@list')->name('admin.goods.attr.list');
+
+    //商品类型属性添加页面
+    Route::get('goods/attr/add', 'Admin\goodsAttrController@add')->name('admin.goods.attr.add');
+
+    //商品类型属性执行添加
+    Route::post('goods/attr/doAdd', 'Admin\goodsAttrController@doAdd')->name('admin.goods.attr.doAdd');
+
+    //商品类型属性修改页面
+    Route::get('goods/attr/edit/{id}', 'Admin\goodsAttrController@edit')->name('admin.goods.attr.edit');
+
+    //商品类型属性执行修改
+    Route::post('goods/attr/doEdit', 'Admin\goodsAttrController@doEdit')->name('admin.goods.attr.doEdit');
+
+    //商品类型属性删除
+    Route::get('goods/attr/del/{id}', 'Admin\goodsAttrController@del')->name('admin.goods.attr.del');
+
+
+
+
+    /*--------------------------------------[商品类型属性列表]--------------------------------------*/
+
+
+    /*--------------------------------------[商品列表]--------------------------------------*/
+
+    //商品列表
+     Route::get('goods/list','Admin\GoodsController@list')->name('admin.goods.list');
+
+     //商品列表接口数据
+     Route::any('goods/data/list','Admin\GoodsController@getGoodsData')->name('admin.goods.data.list');
+
+     //修改商品的属性
+     Route::post('goods/change/attr','Admin\GoodsController@changeAttr')->name('admin.goods.change.attr');
+
+     // 商品添加
+     Route::get('goods/add','Admin\GoodsController@add')->name('admin.goods.add');
+
+      //商品添加操作
+     Route::post('goods/store','Admin\GoodsController@store')->name('admin.goods.store');
+
+     // 商品添加
+     Route::get('goods/edit/{id}','Admin\GoodsController@edit')->name('admin.goods.edit');
+
+      //商品添加操作
+     Route::post('goods/save','Admin\GoodsController@doEdit')->name('admin.goods.save');
+
+     // 商品删除
+     Route::get('goods/del/{id}','Admin\GoodsController@del')->name('admin.goods.del');
+
+     //商品相册的数据
+     Route::post('goods/gallery/list/{goods_id}','Admin\GoodsGalleryController@getGallery')->name('admin.goods.gallery.list');
+
+     // 商品相册删除
+     Route::get('goods/gallery/del/{id}','Admin\GoodsGalleryController@del')->name('admin.goods.gallery.del');
+
+
+
+    /*--------------------------------------[商品列表]--------------------------------------*/
+
 });

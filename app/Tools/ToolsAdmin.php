@@ -128,6 +128,12 @@ class ToolsAdmin
 		return $urls;
 	}
 
+	//生成货号
+	public static function buildGoodsSn($string = 16)
+	{
+		return "JY".date("YmdHis",time());
+	}
+
 }
 
 

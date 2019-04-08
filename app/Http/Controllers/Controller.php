@@ -12,10 +12,22 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+    const 
+        PAGE_SIZE = 1,
+        END       = TRUE;
+    
     //获取列表
     public function getList($object ,$where= [])
     {
     	$list = $object->get()->toArray();
+
+    	return $list;
+    }
+
+     //获取分页列表
+    public function getLimit($object ,$num)
+    {
+    	$list = $object->paginate($num);
 
     	return $list;
     }
@@ -61,6 +73,52 @@ class Controller extends BaseController
 
 		return $info;
 	}
+
+
+	 //保存数据并且获取id，单条
+    public function storeDataGetId($object, $params)
+    {
+
+        return $object->insertGetId($params);
+    }
+
+
+    //多条数据添加
+    public function storeDataMany($object, $params)
+    {
+
+
+        return $object->insert($params);
+    }
+
+
+
+
+
+    //没有分页的数据列表
+    public function getDataList($object, $where = [])
+    {
+
+
+        $list = $object->where($where)->get()->toArray();
+
+
+        return $list;
+    }
+
+
+    //获取带有分页的数据列表
+    public function getPageList($object, $where=[])
+    {
+
+
+        $list = $object->where($where)
+                    ->orderBy('id','desc')
+                    ->paginate(self::PAGE_SIZE);
+
+        return $list;
+    }
+
 
 	//删除公共方法
 	public function delData($object, $id,$key="id")

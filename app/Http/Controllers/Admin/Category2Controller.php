@@ -11,6 +11,13 @@ class Category2Controller extends Controller
 {
     //商品分类
     
+
+    const 
+        USE_ABLE = 1,//可用
+        USE_DISABLE = 2,//禁用
+        END = TRUE;
+    
+    
 	// 商品分类列表
     public function list()
     {

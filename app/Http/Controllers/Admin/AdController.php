@@ -89,7 +89,7 @@ class AdController extends Controller
     	return view('/admin/ad/edit',$res);
     }
 
-    //执行广告添加
+    //执行广告修改
     public function doEdit(Request $request)
     {
     	$params = $request->all();

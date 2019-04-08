@@ -10,6 +10,11 @@ class BrandController extends Controller
 {
     //商品品牌
     
+    const 
+        USE_ABLE = 1,//可用
+        USE_DISABLE = 2,//禁用
+        END = TRUE;
+    
 
     //商品品牌列表页面
     public function list(){

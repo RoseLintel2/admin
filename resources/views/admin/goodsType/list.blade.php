@@ -34,7 +34,7 @@
                                     <td>{{$v['type_name']}}</td>
                                     <td >{{$v['status'] == 1 ? '可用' : '禁用' }}</td>
                                     <td class="col-md-3">
-                                       
+                                       <a class="btn btn-sm btn-warning" href="/admin/goods/attr/list/{{$v['id']}}">查看属性</a>&nbsp;
                                         <a class="btn btn-sm btn-warning" href="/admin/goods/type/edit/{{$v['id']}}">编辑</a>&nbsp;
                                         <a class="btn btn-sm btn-danger" href="/admin/goods/type/del/{{$v['id']}}">删除</a>&nbsp;
                                     </td>
