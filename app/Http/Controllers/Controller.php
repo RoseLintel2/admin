@@ -61,7 +61,7 @@ class Controller extends BaseController
 	}
 	//获取数据的公共方法操作
 	
-	public function getDataInfo($object, $id, $key="id")
+	public function getDataInfo($object, $id, $key="id",$ko ="*")
 	{
 		if(empty($id)){
 
@@ -69,7 +69,7 @@ class Controller extends BaseController
 
 		}
 
-		$info = $object->where($key, $id)->first();
+		$info = $object->select($ko)->where($key, $id)->first();
 
 		return $info;
 	}
@@ -114,7 +114,7 @@ class Controller extends BaseController
 
         $list = $object->where($where)
                     ->orderBy('id','desc')
-                    ->paginate(self::PAGE_SIZE);
+                    ->paginate(5);
 
         return $list;
     }

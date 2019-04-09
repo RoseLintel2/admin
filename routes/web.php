@@ -507,6 +507,19 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
 
 
 
+     //商品sku编辑页面
+     Route::get('goods/sku/edit/{id}','Admin\GoodsSkuController@edit')->name('admin.goods.sku.edit');
+
+     //商品SKU执行添加
+     Route::post('goods/sku/doEdit','Admin\GoodsSkuController@doEdit')->name('admin.goods.sku.doEdit');
+
+     //商品SKU属性列表接口
+     Route::any('goods/sku/attr/{goods_id}','Admin\GoodsSkuController@getSkuAttr')->name('admin.goods.sku.attr');
+
+     //商品属性值
+     Route::any('goods/attr/value/{id}','Admin\GoodsSkuController@getAttrValue')->name('admin.goods.attr.value');
+
+
     /*--------------------------------------[商品列表]--------------------------------------*/
 
 });
