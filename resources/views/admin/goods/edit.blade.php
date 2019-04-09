@@ -256,8 +256,10 @@
                     //获取商品相册列表
                     getGoodsGallery: function(){
                         var that = this;
+                        var id = $("#goods_id").val();
+                        // alert(id);
                         $.ajax({
-                            url: "/admin/goods/gallery/list/"+$("#goods_id").val(),
+                            url: "/admin/goods/gallery/list/"+id,
                             type: "post",
                             data: {_token: $("input[name=_token]").val()},
                             dataType: "json",

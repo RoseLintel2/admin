@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\GoodsGallery;
+use App\Model\goodsGallery;
 
-class GoodsGallerycontroller extends Controller
+class GoodsGalleryController extends Controller
 {
     //商品相册列表数据
     
 
-    public function getGallery($goodsId)
+    public function getGallery($goods_id)
     {
 
     	$return = [
@@ -19,17 +19,18 @@ class GoodsGallerycontroller extends Controller
     		'msg'  => '获取列表成功'
 
     	];
+        // dd($return);
 
-    	$gallery = new GoodsGallery();
+    	$gallery = new goodsGallery();
 
     	$where = [
     		'goods_id' => $goods_id
     	];
 
     	$list = $this->getDataList($gallery,$where);
-
+        
     	$return['data'] = $list;
-
+        // dd($gallery);
     	return json_encode($return);
     }
 
@@ -46,7 +47,7 @@ class GoodsGallerycontroller extends Controller
     		'msg'  => '删除相册成功'
     	];
 
-    	$gallery = new GoodsGallery();
+    	$gallery = new goodsGallery();
 
     	$res = $this->delData($gallery , $id);
 
