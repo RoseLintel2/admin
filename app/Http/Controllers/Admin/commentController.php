@@ -1,52 +1,37 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Model\Comment;
+
 class CommentController extends Controller
 {
-    //
-	//列表
-    public function list()
+    //商品评论
+    
+
+
+    public function list($goodsId)
     {
-    	return view('admin.comment.list');
+    	
+    	$res['comment'] = Comment::getList($goodsId);
+
+    	
+
+    	return view('/admin/comment/list',$res);
     }
-    //获取评论的数据
-    public function getComment()
+
+     public function del($id)
     {
-    	$return  = [
-    		'code' => 2000,
-    		'msg'  => '成功'
-    	];
-    	$comment = new Comment();
-    	$data = $comment->getLists();
-    	$return['data']=[
-    		'total_page' => $data['last_page'],
-    		'page' => $data['current_page'],
-    		'comment' => $data['data']
-    	];
-    	return json_encode($return);
-    }
-    //审核
-    public function check($id)
-    {
-    	$comment = new Comment();
-    	$comment->checkComment($id);
-    	$return  = [
-    		'code' => 2000,
-    		'msg'  => '成功'
-    	];
-    	return json_encode($return);
-    }
-    //删除
-    public function del($id)
-    {
-    	$comment = new Comment();
-    	$comment->delRecord($id);
-    	$return  = [
-    		'code' => 2000,
-    		'msg'  => '成功'
-    	];
-    	return json_encode($return);
+    	
+    	$comment  = new Comment();
+
+    	$this->delData($comment,$id);
+
+    	
+
+    	return redirect()->back();
     }
 }

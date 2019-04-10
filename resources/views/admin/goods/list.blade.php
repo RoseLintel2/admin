@@ -67,6 +67,7 @@
                             <a class="btn btn-sm btn-success" :href="'/admin/goods/sku/edit/'+goods.id">商品SKU属性</a>
                             <a class="btn btn-sm btn-success" :href="'/admin/goods/edit/'+goods.id">编辑</a>
                             <button class="btn btn-sm btn-danger" @click="goodsDel(goods.id)">删除</button>
+                            <a class="btn btn-sm btn-success" :href="'/admin/comment/list/'+goods.id">查看评论</a>
                         </td>
                     </tr>
                     </tbody>

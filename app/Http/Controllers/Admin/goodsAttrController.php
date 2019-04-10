@@ -75,4 +75,5 @@ class goodsAttrController extends Controller
 
 
     }
+   
 }

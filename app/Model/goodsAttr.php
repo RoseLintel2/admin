@@ -38,7 +38,7 @@ class goodsAttr extends Model
     //获取列表选取的属性
     public function getAttrList($where=[])
     {
-        return self::select('id','attr_name')
+        return self::select('id','attr_name','attr_value')
 	                ->where($where)
 	                ->where('input_type', self::INPUT_LIST)
 	                ->get()
@@ -46,11 +46,10 @@ class goodsAttr extends Model
     }
 
     //获取sku属性列表的值
-    public function getAttrValue($id)
+    public function getAttrValue($where=[])
     {
-    	
         return self::select('attr_value')
-                    ->where('id',$id)
+                    ->where($where)
                     ->first();
     }
 }

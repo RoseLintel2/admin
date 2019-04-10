@@ -517,9 +517,79 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
      Route::any('goods/sku/attr/{goods_id}','Admin\GoodsSkuController@getSkuAttr')->name('admin.goods.sku.attr');
 
      //商品属性值
-     Route::any('goods/attr/value/{id}','Admin\GoodsSkuController@getAttrValue')->name('admin.goods.attr.value');
+     Route::any('goods/attr/value/{id}','Admin\GoodsSkuController@getAttrValues')->name('admin.goods.attr.value');
+
+     Route::any('goods/sku/list/bind/{goods_id}','Admin\GoodsSkuController@getSkuList')->name('admin.goods.sku.list.bind');
+
+
+
 
 
     /*--------------------------------------[商品列表]--------------------------------------*/
+
+    /*--------------------------------------[商品评论]--------------------------------------*/
+
+    //商品评论列表
+    Route::get('comment/list/{goods_id}','Admin\CommentController@list')->name('admin.comment.list');
+
+     //商品评论删除
+    Route::get('comment/del/{goods_id}','Admin\CommentController@del')->name('admin.comment.del');
+
+
+    /*--------------------------------------[商品评论]--------------------------------------*/
+
+
+
+    /*--------------------------------------[系统管理]--------------------------------------*/
+
+
+    //支付方式列表
+    Route::get('payment/list','Admin\PaymentController@list')->name('admin.payment.list');
+
+
+    //支付方式添加页面
+    Route::get('payment/add','Admin\PaymentController@add')->name('admin.payment.add');
+
+
+    //支付方式执行添加
+    Route::post('payment/doAdd','Admin\PaymentController@doAdd')->name('admin.payment.doAdd');
+
+
+    //支付方式添加页面
+    Route::get('payment/edit/{id}','Admin\PaymentController@edit')->name('admin.payment.edit');
+
+
+    //支付方式执行修改
+    Route::post('payment/doEdit','Admin\PaymentController@doEdit')->name('admin.payment.doEdit');
+
+    //支付方式删除
+    Route::get('payment/del/{id}','Admin\PaymentController@del')->name('admin.payment.del');
+
+
+
+    //配送方式列表
+    Route::get('shipping/list','Admin\ShippingController@list')->name('admin.shipping.list');
+    //配送添加页面
+    Route::get('shipping/add','Admin\ShippingController@add')->name('admin.shipping.add');
+
+    //执行添加
+    Route::post('shipping/doAdd','Admin\ShippingController@doAdd')->name('admin.shipping.doAdd');
+    //配送删除
+    Route::get('shipping/del/{id}','Admin\ShippingController@del')->name('admin.shipping.del');
+
+    /*--------------------------------------[系统管理]--------------------------------------*/
+
+
+    /*--------------------------------------[会员管理]--------------------------------------*/
+
+    //列表
+    Route::get('member/list','Admin\MemberController@list')->name('admin.member.list');
+    
+    //详情
+    Route::get('member/detail/{id}','Admin\MemberController@detail')->name('admin.member.detail');
+
+    /*--------------------------------------[会员管理]--------------------------------------*/
+
+
 
 });

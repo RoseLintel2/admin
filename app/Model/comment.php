@@ -1,47 +1,21 @@
 <?php
+
 namespace App\Model;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 class Comment extends Model
 {
-    //
-    protected $table="comment";
-    //获取评论列表
-    public function getLists()
-    {
-    	return self::select('comment.id','novel.name','user.username','content','comment.status')
-		    		->leftJoin('novel','novel.id','=','comment.novel_id')
-		    		->leftJoin('user','user.id','=','comment.user_id')
-		    		->orderBy('comment.id','desc')
-		    		->paginate(5)
-		    		->toArray();
-    }
-    public function checkComment($id)
-    {
-    	return self::where('id',$id)->where('status',1)->update(['status'=>2]);
-    }
-    public function delRecord($id)
-    {
-    	return self::where('id',$id)->delete();
-    }
+    //指定表
+    protected $table = "jy_comment";
 
+   public static function getList($goodsId)
+   {
+   		 $sql = DB::select(' select a.id,b.goods_name,c.image_url,c.username,a.type,a.content from jy_comment a LEFT JOIN jy_goods as b on a.comment_id = b.id LEFT JOIN jy_user c on a.user_id = c.id where b.id =  ?',[$goodsId]);
 
+    	// dd($sql);
 
-    //小程序评论接口
-    
-    public static function getAdd($data)
-    {
-        return self::insert($data);
-    }
-
-    //小程序列表接口
-     public static function getList($data)
-    {
-        return self::insert($data);
-    }
-
-    //小程序删除接口
-     public static function getDel($id)
-    {
-        return self::where('id',$id)->delete();
-    }
+    	return $sql;
+   }
 }
