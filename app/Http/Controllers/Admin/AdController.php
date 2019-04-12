@@ -8,6 +8,9 @@ use App\Model\Ad;
 use App\Model\AdPosition;
 use App\Tools\ToolsAdmin;
 use Illuminate\Support\Facades\DB;
+use OSS\OssClient;
+use OSS\Core\OssException;
+use Excel;
 
 class AdController extends Controller
 {
@@ -50,31 +53,37 @@ class AdController extends Controller
     	return view('/admin/ad/add',$res);
     }
 
-    //执行广告添加
+    //执行添加的操作
     public function doAdd(Request $request)
     {
+        $params = $request->all();
 
-    	$params = $request->all();
+        if(!isset($params['image_url']) || empty($params['image_url'])){
 
-    	$params = $this->delToken($params);
+            return redirect()->back()->with('msg','请先上传图片');
+        }
 
-    	if(!isset($params['image_url']) || empty($params['image_url']) )
-    	{
-    		return redirect()->back()->with('msg','广告图片不能为空');
-    	}
+        $files = $params['image_url'];
 
-    	$params['image_url'] = ToolsAdmin::uploadFile($params['image_url']);
-    	// dd($params);
-    	
-    	$AdPosition = new Ad();
+        Excel::load($files->path(), function($reader) {
 
-    	$res = $this->storeData($AdPosition,$params);
+            $data = $reader->all()->toArray();
 
-    	if(!$res){
-    		return redirect()->back();
-    	}
+            // dd($data);
+        });
 
-    	return redirect('/admin/ad/list');
+        $params['image_url'] = ToolsAdmin::uploadFile($params['image_url']);
+
+        $params = $this->delToken($params);
+
+        $ad = new Ad();
+        // dd($params);
+        $res = $this->storeData($ad, $params);
+
+        if(!$res){
+            return redirect()->back()->with('msg','添加广告失败');
+        }
+        return redirect('/admin/ad/list');
     }
 
     //广告修改页面

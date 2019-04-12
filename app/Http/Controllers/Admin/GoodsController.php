@@ -11,6 +11,7 @@ use App\Model\Goods;
 use App\Model\GoodsGallery;
 use App\Tools\ToolsAdmin;
 use Illuminate\Support\Facades\DB;
+use App\Tools\ToolsExcel;
 
 class GoodsController extends Controller
 {
@@ -310,6 +311,89 @@ class GoodsController extends Controller
     		];
     	}
     	return json_encode($return);
+    }
+
+    //商品批量导入页面
+    public function import()
+    {
+        
+
+        return view('admin.goods.import');
+    }
+
+    //执行导入的操作
+    public function doImport(Request $request)
+    {
+
+        $params = $request->all();
+
+        $files = $params['file_name'];
+
+
+
+        //判断文件的后缀名
+        if($files->extension() !="xls" && $files->extension()!="xlsx"){
+
+            return redirect()->back()->with('msg','文件格式不正确，请上传xls，xlsx后缀名文件');
+        }
+
+        $data = ToolsExcel::import($files);
+        
+
+        $goods = new Goods();
+
+        $goodsData = [];
+        
+
+        foreach ($data as $key => $value) {
+
+            //随机货号。不重复
+            
+            $value['goods_sn'] = "JY".date("YmdHis",rand(10000,100000));
+               
+            $goodsData[$key] = $value;
+            
+        }
+        
+        $res = $this->storeDataMany($goods, $goodsData);
+
+        if(!$res){
+
+            return redirect()->back()->with('msg','导入失败');
+        }
+
+        return redirect('/admin/goods/list');
+    }
+
+    //商品导出的功能
+    public function export()
+    {
+
+        $goods = new Goods();
+
+        $data = $this->getDataList($goods);
+
+        //导出的数据
+        $exportData = [];
+
+        $head = ['cate_id','goods_name','goods_sn','goods_desc'];//excel的head头
+
+        $exportData[] = ['cate_id','goods_name','goods_sn','goods_desc'];
+
+        //组装打印的数据
+        foreach ($data as $key => $value) {
+
+            $tmpArr = [];
+
+            foreach ($head as $column) {
+
+                $tmpArr[] = $value[$column];
+            }
+
+            $exportData[] = $tmpArr;
+        }
+
+        ToolsExcel::exportData($exportData);
     }
 
 }

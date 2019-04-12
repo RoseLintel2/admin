@@ -591,5 +591,24 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
     /*--------------------------------------[会员管理]--------------------------------------*/
 
 
+    /*--------------------------------------[商品导入导出]--------------------------------------*/
+
+     //商品导入的页面
+     Route::get('goods/import','Admin\GoodsController@import')->name('admin.goods.import');
+     Route::post('goods/doImport','Admin\GoodsController@doImport')->name('admin.goods.doImport');
+     
+     //商品导出
+     Route::any('goods/export','Admin\GoodsController@export')->name('admin.goods.export');
+
+    /*--------------------------------------[商品导入导出]--------------------------------------*/
+
+
+
+
+    /*--------------------------------------[运维管理]--------------------------------------*/
+
+
+
+    /*--------------------------------------[运维管理]--------------------------------------*/
 
 });
