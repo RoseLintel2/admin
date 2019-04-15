@@ -30,17 +30,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>##</td>
-                        <td>##</td>
-                        <td>##</td>
-                        <td>##</td>
-                        <td>
-                            <a class="btn btn-sm btn-success" href="/admin/ad/edit">编辑</a>
-                            <a class="btn btn-sm btn-danger">删除</a>
-                        </td>
-                    </tr>
+                        @if(!empty($activity_list))
+                            @foreach ($activity_list as $v)
+                                <tr>
+                                    <td>{{$v['id']}}</td>
+                                    <td>{{$v['name']}}</td>
+                                    <td>{{$v['start_time']}}</td>
+                                    <td>{{$v['end_time']}}</td>
+                                    <td>{{$v['activity_config']}}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-success" href="/admin/activity/edit/{{$v['id']}}">编辑</a>
+
+                                        <a class="btn btn-sm btn-danger" href="/admin/activity/del/{{$v['id']}}">删除</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div><!-- table-responsive -->

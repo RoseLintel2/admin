@@ -608,6 +608,43 @@ Route::middleware('admin_auth')->prefix('admin')->group(function(){
     /*--------------------------------------[运维管理]--------------------------------------*/
 
 
+    //活动配置列表
+    Route::get('activity/list','Admin\ActivityController@list')->name('admin.activity.list');
+
+
+    //活动配置添加页面
+    Route::get('activity/add','Admin\ActivityController@add')->name('admin.activity.add');
+
+
+    //活动配置执行添加
+    Route::post('activity/doAdd','Admin\ActivityController@doAdd')->name('admin.activity.doAdd');
+
+    //活动配置修改页面
+    Route::any('activity/edit/{id}','Admin\ActivityController@edit')->name('admin.activity.edit');
+
+    //活动配置执行修改
+    Route::post('activity/doEdit','Admin\ActivityController@doEdit')->name('admin.activity.doEdit');
+
+    //活动配置删除
+    Route::get('activity/del/{id}','Admin\ActivityController@del')->name('admin.activity.del');
+
+
+
+    //地区列表
+    Route::get('region/list/{id?}','Admin\RegionController@list')->name('admin.region.list');
+
+
+    //地区添加页面
+    Route::get('region/add','Admin\RegionController@add')->name('admin.region.add');
+
+
+    //地区执行添加
+    Route::post('region/doAdd','Admin\RegionController@doAdd')->name('admin.region.doAdd');
+
+
+    //地区删除
+    Route::get('region/del/{id}','Admin\RegionController@del')->name('admin.region.del');
+
 
     /*--------------------------------------[运维管理]--------------------------------------*/
 

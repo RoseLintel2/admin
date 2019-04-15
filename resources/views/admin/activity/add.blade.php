@@ -33,12 +33,12 @@
         </div>
         <div class="panel-body panel-body-nopadding">
 
-            <form class="form-horizontal form-bordered" action="" method="post">
+            <form class="form-horizontal form-bordered" action="/admin/activity/doAdd" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label class="col-sm-3 control-label">活动名称</label>
                     <div class="col-sm-6">
-                        <input type="text" placeholder="广告名称" class="form-control" name="activity_name" value="" />
+                        <input type="text" placeholder="广告名称" class="form-control" name="name" value="" />
                     </div>
                 </div>
                 
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">活动配置</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="5" name="active_config"></textarea>
+                        <textarea class="form-control" rows="5" name="activity_config"></textarea>
                     </div>
                 </div>
 

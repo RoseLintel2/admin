@@ -19,7 +19,7 @@ class Controller extends BaseController
     //获取列表
     public function getList($object ,$where= [])
     {
-    	$list = $object->get()->toArray();
+    	$list = $object->where($where)->get()->toArray();
 
     	return $list;
     }

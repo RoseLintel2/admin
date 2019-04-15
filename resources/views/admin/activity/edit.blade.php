@@ -33,31 +33,33 @@
         </div>
         <div class="panel-body panel-body-nopadding">
 
-            <form class="form-horizontal form-bordered" action="" method="post">
+            <form class="form-horizontal form-bordered" action="/admin/activity/doEdit" method="post">
                 {{csrf_field()}}
+
+                <input type="hidden" name="id" value="{{$info->id}}">
                 <div class="form-group">
                     <label class="col-sm-3 control-label">活动名称</label>
                     <div class="col-sm-6">
-                        <input type="text" placeholder="广告名称" class="form-control" name="activity_name" value="" />
+                        <input type="text" placeholder="广告名称" class="form-control" name="name" value="{{$info->name}}" />
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">开始时间</label>
                     <div class="col-sm-6">
-                        <input type="text" placeholder="开始时间" id="start_time" class="form-control" name="start_time" value="" />
+                        <input type="text" placeholder="开始时间" id="start_time" class="form-control" name="start_time" value="{{$info->start_time}}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">结束时间</label>
                     <div class="col-sm-6">
-                        <input type="text" placeholder="结束时间" class="form-control" id="end_time" name="end_time" value="" />
+                        <input type="text" placeholder="结束时间" class="form-control" id="end_time" name="end_time" value="{{$info->end_time}}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">活动配置</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="5" name="active_config"></textarea>
+                        <textarea class="form-control" rows="5" name="activity_config">{{$info->activity_config}}</textarea>
                     </div>
                 </div>
 
